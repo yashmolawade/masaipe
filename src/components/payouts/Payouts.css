@@ -1,0 +1,524 @@
+/* Payout List Styles */
+.payout-list {
+  margin-bottom: var(--space-xl);
+}
+
+.payout-table-container {
+  overflow-x: auto;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm);
+}
+
+.payout-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.payout-table th,
+.payout-table td {
+  padding: var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.payout-table thead {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.payout-table th {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  text-align: center;
+}
+
+.payout-table th.actions {
+  text-align: left;
+}
+
+.payout-table td {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  padding: var(--space-md);
+  text-align: center;
+}
+
+.payout-table td.amount {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.payout-table .status {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: var(--space-md);
+}
+
+.payout-table .status-paid {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.payout-table .status-pending,
+.payout-table .status-underReview {
+  background-color: #ffc107; /* Yellow */
+  color: black;
+}
+
+.payout-table .actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-right: 8px;
+}
+
+.action-btn:last-child {
+  margin-right: 0;
+}
+
+.action-btn.primary {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.action-btn.primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.action-btn.secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.action-btn.secondary:hover {
+  background-color: var(--color-background);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.action-btn.warning {
+  background-color: var(--color-warning);
+  color: white;
+}
+
+.action-btn.warning:hover {
+  background-color: rgba(241, 196, 15, 0.8);
+}
+
+.action-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Payout details modal */
+.payout-details {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.payout-details h3 {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+}
+
+.payout-breakdown {
+  margin-top: var(--space-md);
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.breakdown-row:last-child {
+  border-bottom: none;
+  font-weight: 600;
+  padding-top: var(--space-sm);
+  margin-top: var(--space-xs);
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .payout-table th,
+  .payout-table td {
+    padding: var(--space-sm);
+  }
+
+  .action-btn {
+    padding: 3px 6px;
+    font-size: 11px;
+  }
+}
+
+.payout-actions {
+  margin-bottom: var(--space-lg);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.date-picker-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.date-picker-content {
+  background: var(--color-surface);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-md);
+  min-width: 300px;
+  max-width: 400px;
+  box-shadow: var(--box-shadow-lg);
+}
+
+.date-picker-content h3 {
+  margin-bottom: var(--space-lg);
+  color: var(--color-text-primary);
+}
+
+.date-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.date-inputs .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.date-inputs label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.date-inputs input {
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-sm);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+}
+
+.payout-summary {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+.summary-card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--box-shadow-sm);
+  text-align: center;
+}
+
+.summary-card h3 {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-md);
+  margin-bottom: var(--space-sm);
+}
+
+.summary-card .amount {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+}
+
+.summary-card .amount.paid {
+  color: var(--color-success);
+}
+
+.summary-card .amount.pending {
+  color: var(--color-warning);
+}
+
+.payout-search {
+  margin-bottom: var(--space-lg);
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.search-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* Dark mode support */
+[data-theme="dark"] .summary-card {
+  background-color: var(--color-surface-dark);
+}
+
+[data-theme="dark"] .summary-card .amount.paid {
+  color: var(--color-success-light);
+}
+
+[data-theme="dark"] .summary-card .amount.pending {
+  color: var(--color-warning-light);
+}
+
+[data-theme="dark"] .search-input {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-rgb), 0.2);
+}
+
+/* Payment Modal Styles */
+.payment-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.payment-modal-content {
+  background: var(--color-surface);
+  padding: var(--space-xl);
+  border-radius: var(--border-radius-lg);
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: var(--box-shadow-lg);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: var(--space-md);
+  right: var(--space-md);
+  background: none;
+  border: none;
+  font-size: var(--font-size-xl);
+  cursor: pointer;
+  color: var(--color-text-secondary);
+}
+
+.payment-header {
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.payment-header h2 {
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-primary);
+}
+
+.payment-amount {
+  font-size: var(--font-size-lg);
+}
+
+.amount-label {
+  color: var(--color-text-secondary);
+  margin-right: var(--space-sm);
+}
+
+.amount-value {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.payment-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.mentor-info {
+  background-color: var(--color-background);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-md);
+}
+
+.mentor-info p {
+  margin: var(--space-xs) 0;
+  color: var(--color-text-secondary);
+}
+
+.payment-methods h3 {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+}
+
+.methods-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-md);
+}
+
+.method-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-md);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.method-card.selected {
+  border-color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.method-icon {
+  font-size: 24px;
+  margin-bottom: var(--space-sm);
+}
+
+.method-name {
+  font-size: var(--font-size-sm);
+  text-align: center;
+  color: var(--color-text-primary);
+}
+
+.payment-summary {
+  background-color: var(--color-background);
+  padding: var(--space-lg);
+  border-radius: var(--border-radius-md);
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text-secondary);
+}
+
+.summary-row.total {
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.pay-now-btn {
+  width: 100%;
+  padding: var(--space-md);
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.pay-now-btn:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.pay-now-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .payment-modal-content {
+  background-color: var(--color-surface-dark);
+}
+
+[data-theme="dark"] .method-card {
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .method-card.selected {
+  background-color: rgba(var(--color-primary-rgb), 0.15);
+}
+
+[data-theme="dark"] .mentor-info,
+[data-theme="dark"] .payment-summary {
+  background-color: var(--color-surface-dark);
+}
+
+.amount.review {
+  color: #ff9800;
+}
+
+.status-underReview {
+  background-color: #ff9800;
+  color: black;
+}
+
+.action-btn.approve {
+  background-color: #4caf50;
+  color: white;
+  transition: all 0.2s ease;
+}
+
+.action-btn.approve:hover {
+  background-color: #388e3c;
+}
+
+/* Styles for the new 'Yourself' column */
+.payout-table td.yourself-actions {
+  /* Removing styles */
+  display: none;
+}
+
+.payout-table td.yourself-actions .action-btn {
+  /* Removing styles */
+  min-width: auto;
+  white-space: normal;
+}

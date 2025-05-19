@@ -1,0 +1,419 @@
+:root {
+  /* Color System - Light Mode */
+  scroll-behavior: smooth;
+  --color-primary: #ff0000;
+  --color-primary-light: #ff3333;
+  --color-primary-dark: #cc0000;
+
+  --color-bg: #ffffff;
+  --color-surface: #f5f5f5;
+  --color-card: #ffffff;
+  --color-border: #e0e0e0;
+
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4a5568;
+  --color-text-tertiary: #718096;
+  --color-text-on-primary: #ffffff;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+
+  /* Shimmer Effect Colors */
+  --shimmer-base: #f0f0f0;
+  --shimmer-highlight: #f9f9f9;
+
+  /* Spacing System */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-xxl: 48px;
+
+  /* Typography */
+  --font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-xxl: 32px;
+
+  /* Borders & Shadows */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+
+  --box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --box-shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.35s ease;
+}
+
+/* Dark Mode Colors */
+.dark-mode {
+  --color-primary: #ff3333;
+  --color-primary-light: #ff6666;
+  --color-primary-dark: #cc0000;
+
+  --color-bg: #121212;
+  --color-bg-dark: #121212;
+  --color-surface: #1e1e1e;
+  --color-card: #2a2a2a;
+  --color-border: #333333;
+  --color-border-dark: #333333;
+
+  --color-text-primary: #ffffff;
+  --color-text-primary-dark: #ffffff;
+  --color-text-secondary: #cccccc;
+  --color-text-tertiary: #999999;
+  --color-text-on-primary: #ffffff;
+
+  /* Shimmer Effect Colors for Dark Mode */
+  --shimmer-base: #2a2a2a;
+  --shimmer-highlight: #3a3a3a;
+
+  --color-success: #22c55e;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+}
+
+/* Hide scrollbars across the app */
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+* {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* For elements that should still be scrollable but without visible scrollbars */
+.scrollable {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  transition: background-color var(--transition-normal),
+    color var(--transition-normal);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-family);
+  border: none;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius-md);
+  font-size: var(--font-size-sm);
+  transition: background-color var(--transition-fast);
+}
+
+button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+button.text {
+  background-color: transparent;
+  color: var(--color-primary);
+  padding: var(--space-xs) var(--space-sm);
+}
+
+button.text:hover {
+  background-color: rgba(255, 0, 0, 0.05);
+}
+
+button.secondary {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+button.secondary:hover {
+  background-color: var(--color-border);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-sm);
+  transition: border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.1);
+}
+
+/* Animation */
+.fade-in {
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Shimmer Loading Effect */
+.shimmer {
+  background: var(--shimmer-base);
+  background-image: linear-gradient(
+    to right,
+    var(--shimmer-base) 0%,
+    var(--shimmer-highlight) 20%,
+    var(--shimmer-base) 40%,
+    var(--shimmer-base) 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 800px 100%;
+  display: inline-block;
+  position: relative;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: var(--border-radius-sm);
+  min-height: 16px;
+}
+
+.shimmer.shimmer-card {
+  width: 100%;
+  height: 120px;
+  margin-bottom: var(--space-md);
+}
+
+.shimmer.shimmer-text {
+  width: 100%;
+  height: 14px;
+  margin-bottom: var(--space-sm);
+}
+
+.shimmer.shimmer-button {
+  width: 100px;
+  height: 36px;
+}
+
+.shimmer.shimmer-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: var(--space-md);
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+/* Loading Container */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl);
+  width: 100%;
+}
+
+/* Animation Delays */
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Responsive width containers */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+/* Form Layout */
+.form-row {
+  display: flex;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.form-group {
+  margin-bottom: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.form-group label {
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .form-row {
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+}
+
+/* Global Dropdown Styles */
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+  padding: var(--space-sm) var(--space-md);
+  padding-right: 32px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+}
+
+select:hover {
+  border-color: var(--color-primary);
+}
+
+select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+select option {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  padding: var(--space-sm);
+}
+
+/* Dark Mode Dropdown Styles */
+[data-theme="dark"] select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-color: var(--color-surface-dark);
+  color: var(--color-text-primary-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] select option {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+[data-theme="dark"] select:focus {
+  border-color: var(--color-primary-light);
+  box-shadow: 0 0 0 1px var(--color-primary-light);
+}
+
+/* Fix for Firefox dark mode */
+@-moz-document url-prefix() {
+  [data-theme="dark"] select {
+    color-scheme: dark;
+  }
+}
+
+/* Fix for Edge/IE dark mode */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  [data-theme="dark"] select {
+    background-color: #1a1a1a;
+    color: #ffffff;
+  }
+}
+
+/* Improve contrast for disabled states */
+select:disabled {
+  background-color: var(--color-surface);
+  color: var(--color-text-tertiary);
+  cursor: not-allowed;
+}
+
+[data-theme="dark"] select:disabled {
+  background-color: #2a2a2a;
+  color: #666666;
+}
+
+/* Fix autofill styles for dark mode */
+.dark-mode input:-webkit-autofill,
+.dark-mode input:-webkit-autofill:hover,
+.dark-mode input:-webkit-autofill:focus,
+.dark-mode input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #121212 inset !important;
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Fix autocomplete dropdown in dark mode */
+.dark-mode input:-webkit-autofill + div,
+.dark-mode input:-webkit-autofill:focus + div {
+  background-color: #121212 !important;
+  color: #ffffff !important;
+}

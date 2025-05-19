@@ -1,0 +1,5 @@
+mentorEmail,sessionType,date,duration,ratePerHour,notes
+mentor@example.com,oneOnOne,25-12-2023,60,50,One on one mentoring session
+mentor2@example.com,group,26-12-2023,90,75,Group mentoring session
+mentor3@example.com,workshop,27-12-2023,120,100,Technical workshop on React
+mentor4@example.com,review,28-12-2023,45,60,Code review session 

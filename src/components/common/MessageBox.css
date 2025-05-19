@@ -1,0 +1,141 @@
+.message-box-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.message-box-content {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  padding: var(--space-lg);
+  min-width: 300px;
+  max-width: 90%;
+  position: relative;
+  box-shadow: var(--box-shadow-lg);
+  animation: slideIn 0.2s ease-in-out;
+}
+
+.message-box-message {
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+  margin-right: var(--space-xl);
+  line-height: 1.5;
+  margin-bottom: var(--space-md);
+}
+
+.message-box-close {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  padding: var(--space-xs);
+  line-height: 1;
+  transition: all var(--transition-fast);
+}
+
+.message-box-close:hover {
+  color: var(--color-text-primary);
+  transform: scale(1.1);
+}
+
+.message-box-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.confirm-button,
+.cancel-button {
+  padding: var(--space-sm) var(--space-lg);
+  border-radius: var(--border-radius-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.confirm-button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+}
+
+.confirm-button:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.cancel-button {
+  background-color: var(--color-surface);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+}
+
+.cancel-button:hover {
+  background-color: var(--color-background);
+  transform: translateY(-1px);
+}
+
+/* Message types */
+.message-box-content.error {
+  border-left: 4px solid var(--color-error);
+}
+
+.message-box-content.success {
+  border-left: 4px solid var(--color-success);
+}
+
+.message-box-content.warning {
+  border-left: 4px solid var(--color-warning);
+}
+
+.message-box-content.info {
+  border-left: 4px solid var(--color-primary);
+}
+
+/* Dark mode styles */
+[data-theme="dark"] .message-box-content {
+  background-color: var(--color-surface-dark);
+}
+
+[data-theme="dark"] .cancel-button {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .cancel-button:hover {
+  background-color: var(--color-background-dark);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+} 

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64">
+  <!-- Even larger money bag outline with gold fill -->
+  <path d="M4 60 Q0 28 32 4 Q64 28 60 60 Q32 68 4 60 Z" fill="#FFD700" stroke="#111" stroke-width="5"/>
+  <!-- Knot/top -->
+  <path d="M20 18 Q32 -2 44 18" fill="none" stroke="#111" stroke-width="5"/>
+  <!-- Bold black 'm' in Poppins font -->
+  <text x="32" y="48" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="28" font-weight="bold" fill="#111">m</text>
+</svg>

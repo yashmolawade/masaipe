@@ -1,0 +1,137 @@
+.universal-loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  background-color: rgba(255, 255, 255, 0.95);
+  transition: background-color 0.2s;
+}
+
+[data-theme="dark"].universal-loader-overlay {
+  background-color: rgba(18, 18, 18, 0.98);
+}
+
+[data-theme="light"].universal-loader-overlay {
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+.universal-loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  width: 100%;
+}
+
+.universal-loader-text {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #555;
+  text-align: center;
+  font-weight: 500;
+}
+
+/* SPINNING ORBITS LOADER */
+.spinner-box {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  position: relative;
+}
+
+.blue-orbit,
+.green-orbit,
+.red-orbit,
+.white-orbit {
+  position: absolute;
+  border-radius: 50%;
+  box-shadow: 0 0 0 2px rgba(0, 120, 212, 0.15);
+}
+
+.blue-orbit {
+  width: 120px;
+  height: 120px;
+  animation: spin3D 2s linear 0s infinite;
+  border: 1.5px solid #3498db;
+}
+
+.green-orbit {
+  width: 80px;
+  height: 80px;
+  animation: spin3D 1.5s linear 0s infinite;
+  border: 1.5px solid #2ecc71;
+}
+
+.red-orbit {
+  width: 50px;
+  height: 50px;
+  animation: spin3D 1s linear 0s infinite;
+  border: 1.5px solid #e74c3c;
+}
+
+.white-orbit {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #f1c40f;
+  animation: spin3D 3s linear 0s infinite;
+}
+
+[data-theme="dark"] .blue-orbit {
+  border-color: #90caf9;
+}
+[data-theme="dark"] .green-orbit {
+  border-color: #81c784;
+}
+[data-theme="dark"] .red-orbit {
+  border-color: #ef9a9a;
+}
+[data-theme="dark"] .white-orbit {
+  border-color: #ffe082;
+}
+
+.w-ball {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: linear-gradient(to right, #ec407a, #f06292);
+  border-radius: 50%;
+  transform: translate(-10px, -10px);
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes spin3D {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-15px);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+}
+
+/* Dark mode support */
+[data-theme="dark"] .universal-loader-container {
+  background-color: rgba(18, 18, 18, 0.9);
+}
+
+[data-theme="dark"] .universal-loader-text {
+  color: #e0e0e0;
+}

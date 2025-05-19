@@ -1,0 +1,1645 @@
+.session-list {
+  margin-bottom: var(--space-xl);
+}
+
+.session-section {
+  margin-bottom: var(--space-xl);
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.session-section h3 {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.scrollable-sessions {
+  overflow-x: auto;
+  padding-bottom: var(--space-md);
+  margin: 0 40px;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  position: relative;
+}
+
+.scrollable-sessions::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scrollable-sessions::-webkit-scrollbar-track {
+  background: var(--color-background);
+  border-radius: 4px;
+}
+
+.scrollable-sessions::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 4px;
+}
+
+[data-theme="dark"] .scrollable-sessions::-webkit-scrollbar-thumb {
+  background-color: var(--color-border-dark);
+}
+
+.scrollable-grid {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1;
+  transition: all var(--transition-fast);
+}
+
+.scroll-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.scroll-button.left {
+  left: -40px;
+}
+
+.scroll-button.right {
+  right: -40px;
+}
+
+[data-theme="dark"] .scroll-button {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-border-dark);
+  color: var(--color-text-primary-dark);
+}
+
+[data-theme="dark"] .scroll-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+@media (max-width: 768px) {
+  .scrollable-sessions {
+    margin: 0 20px;
+  }
+
+  .scroll-button {
+    width: 32px;
+    height: 32px;
+  }
+
+  .scroll-button.left {
+    left: -20px;
+  }
+
+  .scroll-button.right {
+    right: -20px;
+  }
+}
+
+/* Mobile carousel styles */
+@media (max-width: 768px) {
+  .sessions-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    margin: 0 -1rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100vw;
+  }
+  .sessions-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .session-card {
+    flex: 0 0 75vw;
+    min-width: 200px;
+    max-width: 80vw;
+    padding: 12px 10px;
+    min-height: 220px;
+    font-size: 14px;
+  }
+
+  /* Show carousel buttons on mobile */
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all var(--transition-fast);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .carousel-button:hover {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+  }
+
+  .carousel-button.prev {
+    left: 0;
+  }
+
+  .carousel-button.next {
+    right: 0;
+  }
+}
+
+/* Tablet view - 2 columns */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sessions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(340px, 1fr));
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    margin: 0;
+    overflow-x: auto;
+  }
+  .session-card {
+    min-width: 340px;
+    max-width: 100%;
+  }
+}
+
+/* Dark mode support */
+[data-theme="dark"] .carousel-button {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-border-dark);
+  color: var(--color-text-primary-dark);
+}
+
+[data-theme="dark"] .carousel-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* Session Card Styles */
+.session-card {
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm);
+  transition: all var(--transition-fast);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  padding-top: 40px;
+
+  min-height: 400px;
+  position: relative;
+}
+
+.session-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--box-shadow-md);
+}
+
+@media (max-width: 768px) {
+  .session-card:hover {
+    transform: none;
+  }
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+  position: relative;
+}
+
+.session-type {
+  background-color: rgba(74, 137, 220, 0.1);
+  color: var(--color-primary);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.session-date {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.session-paid-badge,
+.session-review-badge {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  box-shadow: var(--box-shadow-sm);
+}
+
+.session-paid-badge {
+  background-color: var(--color-success);
+  color: white;
+}
+
+.session-review-badge {
+  background-color: var(--color-warning);
+  color: white;
+}
+
+.session-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-xs) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.detail-row:last-child {
+  border-bottom: none;
+}
+
+.detail-row strong {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.detail-row span {
+  color: var(--color-text-secondary);
+}
+
+.notes {
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.notes span {
+  font-style: italic;
+}
+
+.session-amount {
+  margin-top: auto;
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount-label {
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.amount-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-success);
+}
+
+.session-actions {
+  margin-top: var(--space-md);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.session-action-buttons {
+  display: flex;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.action-buttons-left,
+.action-buttons-right {
+  display: flex;
+  gap: var(--space-xs);
+}
+
+.action-buttons-right {
+  margin-left: auto;
+}
+
+.symbol-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all var(--transition-fast);
+}
+
+.symbol-button.edit {
+  background-color: var(--color-warning-light);
+  color: var(--color-warning);
+}
+
+.symbol-button.delete {
+  background-color: var(--color-error-light);
+  color: var(--color-error);
+}
+
+.symbol-button:hover {
+  transform: scale(1.1);
+}
+
+.symbol-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.attendance-button {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--border-radius-sm);
+  border: none;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.attendance-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.status-badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+}
+
+.status-badge.paid {
+  background-color: #4caf50; /* Green */
+  color: white;
+}
+
+.status-badge.pending,
+.status-badge.review,
+.status-badge.unpaid {
+  background-color: #ffc107; /* Yellow */
+  color: black;
+}
+
+.session-actions {
+  margin-top: var(--space-md);
+}
+
+.session-action-buttons {
+  margin-top: var(--space-md);
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 40px;
+}
+
+.button-row {
+  display: flex;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+}
+
+.symbol-button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 20px;
+}
+
+.symbol-button:hover {
+  background: var(--color-surface);
+  transform: translateY(-1px);
+}
+
+.symbol-button.edit {
+  color: var(--color-primary);
+}
+
+.symbol-button.edit:hover {
+  background: rgba(74, 137, 220, 0.1);
+}
+
+.symbol-button.delete {
+  color: var(--color-error);
+}
+
+.symbol-button.delete:hover {
+  background: rgba(231, 76, 60, 0.1);
+}
+
+.symbol-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.session-action-buttons .danger {
+  background-color: var(--color-error);
+  color: white;
+}
+
+.payout-controls {
+  position: absolute;
+  bottom: var(--space-lg);
+  right: var(--space-lg);
+  left: var(--space-lg);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+}
+
+.required {
+  color: var(--color-error);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+  gap: var(--space-sm);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+  width: 100%;
+}
+
+.form-row .form-group {
+  width: 100%;
+}
+
+.form-row .form-group input,
+.form-row .form-group select {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Full width items */
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.session-edit-form {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 var(--space-md) var(--space-xl) 0;
+  margin-bottom: calc(80px + var(--space-xl)); /* Space for fixed buttons */
+}
+
+.session-edit-form .form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.session-edit-form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.session-edit-form input,
+.session-edit-form select,
+.session-edit-form textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.75rem;
+  height: 46px;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+}
+
+.session-edit-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+.session-edit-form input:focus,
+.session-edit-form select:focus,
+.session-edit-form textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.session-edit-form textarea {
+  min-height: 120px;
+  height: auto;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.form-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--space-lg) var(--space-xl);
+  gap: var(--space-md);
+  background: var(--color-surface);
+  border-top: 1.5px solid var(--color-border);
+  box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.form-actions button {
+  min-width: 120px;
+  height: 46px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0 var(--space-lg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .modal-content {
+    padding: var(--space-lg);
+  }
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.pagination-arrow {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background-color: var(--color-surface);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0;
+}
+
+.pagination-arrow:hover {
+  background-color: var(--color-background);
+  transform: translateY(-1px);
+  border-color: var(--color-primary);
+}
+
+.pagination-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.pagination-arrow svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-text-primary);
+}
+
+.pagination-arrow:hover svg {
+  fill: var(--color-primary);
+}
+
+.pagination-info {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  min-width: 100px;
+  text-align: center;
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.empty-state h3 {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.empty-state p {
+  color: var(--color-text-secondary);
+}
+
+@media (max-width: 1024px) {
+  .sessions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .session-card {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .sessions-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    margin: 0 -1rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100vw;
+  }
+  .sessions-grid::-webkit-scrollbar {
+    display: none;
+  }
+  .session-card {
+    flex: 0 0 75vw;
+    min-width: 200px;
+    max-width: 80vw;
+    padding: 12px 10px;
+    min-height: 220px;
+    font-size: 14px;
+  }
+  .scrollable-sessions {
+    margin: 0 10px;
+  }
+  .session-section h3 {
+    font-size: 0.95rem;
+  }
+  .payout-button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .session-paid-badge,
+  .session-review-badge {
+    position: static;
+    display: inline-block;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    top: unset;
+    right: unset;
+    font-size: 12px;
+    padding: 2px 8px;
+  }
+  .session-details {
+    margin-top: 20px !important;
+    font-size: 13px;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .session-card {
+    min-height: 280px;
+    padding: 12px;
+  }
+  .session-details {
+    margin-top: 8px;
+    font-size: 13px;
+    gap: 4px;
+  }
+  .detail-row {
+    margin-bottom: 6px;
+  }
+  .session-actions {
+    gap: 8px;
+  }
+  .session-action-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+  .payout-button {
+    width: 100%;
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+  .symbol-button {
+    width: 28px;
+    height: 28px;
+  }
+  .session-paid-badge,
+  .session-review-badge {
+    font-size: 10px;
+    padding: 1px 6px;
+    margin-bottom: 6px;
+    margin-right: 6px;
+  }
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: var(--color-surface);
+  padding: var(--space-xl) var(--space-xl) 0;
+  border-radius: var(--border-radius-sm);
+  width: 90%;
+  max-width: 500px;
+  height: 70vh;
+  position: relative;
+  box-shadow: var(--box-shadow-lg);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-lg);
+  flex-shrink: 0;
+  padding-bottom: var(--space-md);
+  border-bottom: 1.5px solid var(--color-border);
+}
+
+.modal-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  padding: 0;
+}
+
+.modal-close:hover {
+  color: var(--color-text-primary);
+}
+
+/* When modal is open, prevent background scrolling */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Custom scrollbar for the form */
+.session-edit-form::-webkit-scrollbar {
+  width: 8px;
+}
+
+.session-edit-form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.session-edit-form::-webkit-scrollbar-thumb {
+  background-color: var(--color-border);
+  border-radius: 4px;
+  border: 2px solid var(--color-surface);
+}
+
+/* Add more spacing between form groups for better vertical distribution */
+.session-edit-form .form-group {
+  margin-bottom: var(--space-lg);
+}
+
+/* Make the textarea taller */
+.session-edit-form textarea {
+  min-height: 120px;
+}
+
+/* Form grid layout */
+.form-row {
+  margin-bottom: var(--space-lg);
+}
+
+/* Full width items */
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.session-edit-form .form-group {
+  margin-bottom: 0;
+}
+
+.session-edit-form label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: var(--space-xs);
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.session-edit-form input,
+.session-edit-form select,
+.session-edit-form textarea {
+  width: 100%;
+  padding: 0.75rem;
+  height: 42px;
+  font-size: 0.95rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  transition: all 0.2s ease;
+}
+
+.session-edit-form select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+.session-edit-form input:focus,
+.session-edit-form select:focus,
+.session-edit-form textarea:focus {
+  border-color: var(--color-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
+}
+
+.session-edit-form textarea {
+  min-height: 120px;
+  height: auto;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-lg);
+  padding-top: var(--space-lg);
+  border-top: 1.5px solid var(--color-border);
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.form-actions button {
+  min-width: 100px;
+  height: 42px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0 var(--space-lg);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .modal-content {
+    padding: var(--space-lg);
+  }
+}
+
+.session-form-container {
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.session-form-container h3 {
+  margin-bottom: var(--space-xl);
+  color: var(--color-text-primary);
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.session-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.session-form .form-actions {
+  position: static;
+  margin-top: var(--space-lg);
+  padding: var(--space-md) 0 0;
+  border-top: 1px solid var(--color-border);
+  background: none;
+  box-shadow: none;
+}
+
+.session-form .form-actions button {
+  min-width: 120px;
+  height: 42px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0 var(--space-lg);
+}
+
+.form-error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--space-md);
+}
+
+.form-success {
+  background-color: var(--color-success-bg);
+  color: var(--color-success);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--space-md);
+}
+
+/* Style the confirmation message box content */
+.message-box-content {
+  white-space: pre-line; /* Preserve line breaks in the confirmation message */
+}
+
+.download-pdf-button {
+  background-color: var(--color-text-primary);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-sm) var(--space-xl);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  height: 38px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.download-pdf-button:hover {
+  background-color: #000;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode styles for download button */
+[data-theme="dark"] .download-pdf-button {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+}
+
+[data-theme="dark"] .download-pdf-button:hover {
+  background-color: var(--color-primary-dark);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.sessions-container {
+  margin-bottom: var(--space-xl);
+}
+
+.sessions-section {
+  margin-bottom: var(--space-xl);
+  overflow: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+}
+
+.sessions-section h3 {
+  margin-bottom: var(--space-md);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Dark mode support for the pagination controls */
+[data-theme="dark"] .pagination-arrow {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .pagination-arrow:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-primary);
+}
+
+.scrollable-outer-container {
+  position: relative;
+}
+
+.scrollable-sessions-container {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  margin: 0 var(--space-md); /* Adjust if buttons are outside */
+}
+
+.scrollable-sessions-container::-webkit-scrollbar {
+  /* WebKit */
+  display: none;
+}
+
+.scrollable-sessions-grid {
+  display: flex; /* Lay out cards horizontally */
+  gap: var(--space-md);
+  padding-bottom: var(
+    --space-xs
+  ); /* Optional: if cards have bottom margin that gets cut off */
+}
+
+/* Ensure session cards within the scrollable grid maintain their original styling but are laid out by flex */
+.scrollable-sessions-grid .session-card {
+  flex: 0 0 calc((100% / 3) - (var(--space-md) * 2 / 3)); /* Show 3 cards, accounting for gap */
+  min-width: calc(
+    (100% / 3) - (var(--space-md) * 2 / 3)
+  ); /* Important for flex basis */
+  /* Keep original session-card styles from above for height, padding, etc. */
+}
+
+/* Scroll buttons for session grid */
+.scroll-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10; /* Ensure buttons are above cards */
+  transition: all var(--transition-fast);
+}
+
+.scroll-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+.scroll-button.left {
+  left: -10px; /* Position outside the scroll container */
+}
+
+.scroll-button.right {
+  right: -10px; /* Position outside the scroll container */
+}
+
+[data-theme="dark"] .scroll-button {
+  background-color: var(
+    --color-surface-dark,
+    var(--color-surface)
+  ); /* Fallback if dark vars not set */
+  border-color: var(--color-border-dark, var(--color-border));
+  color: var(--color-text-primary-dark, var(--color-text-primary));
+}
+
+[data-theme="dark"] .scroll-button:hover {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* Responsive adjustments for card width in scrollable container if needed */
+@media (max-width: 1200px) {
+  /* Adjust breakpoint as needed */
+  .scrollable-sessions-grid .session-card {
+    flex: 0 0 calc((100% / 2) - (var(--space-md) / 2)); /* Show 2 cards */
+    min-width: calc((100% / 2) - (var(--space-md) / 2));
+  }
+}
+
+@media (max-width: 768px) {
+  .scrollable-sessions-grid .session-card {
+    flex: 0 0 calc(100% - var(--space-md)); /* Show 1 card */
+    min-width: calc(100% - var(--space-md));
+  }
+  .scrollable-sessions-container {
+    margin: 0; /* No margin for smaller screens if buttons are hidden or repositioned */
+  }
+  .scroll-button.left {
+    left: 5px;
+  }
+  .scroll-button.right {
+    right: 5px;
+  }
+}
+
+/* Original sessions-grid for non-scrollable contexts if still used */
+.sessions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+/* Responsive session grid for smoother mobile experience */
+.responsive-session-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+@media (max-width: 1024px) {
+  .responsive-session-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .responsive-session-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+    /* Remove horizontal scroll and snap */
+    overflow-x: unset;
+    flex-direction: unset;
+    padding-bottom: 0;
+  }
+  .responsive-session-grid > * {
+    flex: unset;
+    max-width: 100%;
+    scroll-snap-align: unset;
+  }
+}
+
+.payout-calculation-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+}
+
+.payout-calculation-table th,
+.payout-calculation-table td {
+  padding: var(--space-sm) var(--space-md);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.payout-calculation-table th {
+  background-color: rgba(0, 0, 0, 0.02);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+}
+
+.payout-calculation-table td {
+  font-size: var(--font-size-sm);
+}
+
+.payout-calculation-table tr:last-child {
+  font-weight: bold;
+  background-color: rgba(var(--color-primary-rgb), 0.05);
+}
+
+.payout-calculation-table .amount-column {
+  text-align: right;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .payout-calculation-table th {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .payout-calculation-table tr:last-child {
+  background-color: rgba(255, 51, 51, 0.1);
+}
+
+.attendance-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.attendance-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.attendance-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.attendance {
+  margin-top: 10px;
+  padding: 5px 0;
+  border-top: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.attendance .attended {
+  color: #4caf50;
+  font-weight: 500;
+}
+
+.status-badge.review {
+  background-color: #ff9800;
+  color: black;
+}
+
+/* CSV Uploader Styles */
+.csv-uploader {
+  margin-bottom: var(--space-xl);
+}
+
+.file-upload-container {
+  padding: var(--space-sm);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-background);
+  margin-bottom: var(--space-sm);
+  text-align: center;
+}
+
+.file-input {
+  width: 100%;
+  cursor: pointer;
+}
+
+.help-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
+  padding: var(--space-sm);
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: var(--border-radius-sm);
+}
+
+.help-text p {
+  margin-bottom: var(--space-sm);
+}
+
+.help-text code {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.9em;
+}
+
+.template-link {
+  color: var(--color-primary);
+  text-decoration: underline;
+  font-weight: 500;
+  display: inline-block;
+  margin-top: var(--space-xs);
+}
+
+.csv-preview {
+  margin-top: var(--space-xl);
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.csv-preview h4 {
+  margin-bottom: var(--space-md);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
+}
+
+.csv-table-container {
+  overflow-x: auto;
+  margin-bottom: var(--space-sm);
+}
+
+.csv-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.csv-table th,
+.csv-table td {
+  padding: var(--space-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.csv-table th {
+  background-color: var(--color-background);
+  font-weight: 600;
+  position: sticky;
+  top: 0;
+}
+
+.preview-note {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-secondary);
+  text-align: center;
+  font-style: italic;
+  margin-top: var(--space-sm);
+}
+
+.secondary-button {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  margin-right: var(--space-sm);
+}
+
+.secondary-button:hover:not(:disabled) {
+  background-color: var(--color-surface);
+  border-color: var(--color-primary);
+}
+
+.form-error {
+  background-color: var(--color-error-bg);
+  color: var(--color-error);
+  padding: var(--space-md);
+  border-radius: var(--border-radius-sm);
+  margin-bottom: var(--space-md);
+  white-space: pre-line;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.error-troubleshooting {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-left: 3px solid rgba(220, 53, 69, 0.5);
+  border-radius: 4px;
+  white-space: normal;
+}
+
+.preview-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 15px;
+  padding: 10px 0;
+}
+
+.preview-pagination-btn {
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  padding: 5px 12px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.preview-pagination-btn:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.preview-pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.preview-pagination-info {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+/* Dark mode support */
+[data-theme="dark"] .help-text {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .help-text code {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .file-upload-container {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .csv-preview {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .csv-table th {
+  background-color: var(--color-background-dark);
+}
+
+[data-theme="dark"] .secondary-button {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-primary-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .secondary-button:hover:not(:disabled) {
+  background-color: var(--color-surface-dark);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+[data-theme="dark"] .error-troubleshooting {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left-color: rgba(220, 53, 69, 0.7);
+}
+
+[data-theme="dark"] .preview-pagination-btn {
+  background-color: var(--color-background-dark);
+  color: var(--color-text-primary-dark);
+  border-color: var(--color-border-dark);
+}
+
+[data-theme="dark"] .preview-pagination-btn:hover:not(:disabled) {
+  background-color: var(--color-primary);
+  color: white;
+  border-color: var(--color-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .csv-preview {
+    margin: var(--space-md) -var(--space-md);
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .preview-pagination {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .help-text code {
+    word-break: break-all;
+  }
+}
+
+/* Session Forms Container */
+.session-forms-container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.session-forms-container .session-form-container {
+  margin-bottom: 0;
+}
+
+/* CSV Uploader Styles */
+.csv-uploader {
+  margin-bottom: var(--space-xl);
+}
+
+/* Add these styles to hide scrollbars for session-section and sessions-section */
+.session-section::-webkit-scrollbar,
+.sessions-section::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Opera */
+}
+
+/* Comprehensive scrollbar hiding for mobile */
+@media (max-width: 768px) {
+  .session-section,
+  .sessions-section,
+  .scrollable-sessions,
+  .scrollable-sessions-container,
+  .sessions-grid,
+  .responsive-session-grid,
+  .scrollable-outer-container,
+  .session-list,
+  [class*="session"] [class*="scroll"],
+  [class*="scroll"] {
+    scrollbar-width: none !important; /* Firefox */
+    -ms-overflow-style: none !important; /* IE/Edge */
+  }
+
+  .session-section::-webkit-scrollbar,
+  .sessions-section::-webkit-scrollbar,
+  .scrollable-sessions::-webkit-scrollbar,
+  .scrollable-sessions-container::-webkit-scrollbar,
+  .sessions-grid::-webkit-scrollbar,
+  .responsive-session-grid::-webkit-scrollbar,
+  .scrollable-outer-container::-webkit-scrollbar,
+  .session-list::-webkit-scrollbar,
+  [class*="session"] [class*="scroll"]::-webkit-scrollbar,
+  [class*="scroll"]::-webkit-scrollbar {
+    width: 0 !important;
+    height: 0 !important;
+    display: none !important; /* Chrome/Safari/Opera */
+  }
+}
